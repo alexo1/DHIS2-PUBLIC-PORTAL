@@ -1,0 +1,65 @@
+
+body{
+    background-color:white;
+    font-size:10px;
+    margin: 0;
+    padding: 0;
+}
+
+.container{
+  padding-top: 250px;
+  border-radius: 0px;
+}
+.col-here{
+    background-color:white;
+    
+}
+.header{
+text-align: center;
+font-family: sans-serif;
+font-weight: 100px;
+
+margin-bottom: 50px;
+padding: 0;
+}
+.textbox{
+    text-align: center;
+    padding:0 5px 0 5px;
+    width: 100%;
+    overflow: hidden;
+    border: 0;
+    margin: 8px 0;
+    border-bottom: 2px solid #9932CC;
+    
+}
+.button{
+    
+    text-align: center;
+
+width: 100%;
+
+}
+
+.textbox input{
+    border: none;
+    outline: none;
+    background: none;
+    margin: 0;
+    float: left;
+    font-size: 20px;
+}
+.btn{
+    background-color: #9932CC;
+    color: white;
+    
+
+   
+
+}
+.form-login{
+    border:1px;
+    box-shadow:5px 5px 5px 5px rgba(0,0,0,0.5);
+    border-radius: 20px;
+    
+    
+}
