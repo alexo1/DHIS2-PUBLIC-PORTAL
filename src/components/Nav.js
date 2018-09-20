@@ -60,7 +60,7 @@ class NavItems extends Component{
       <div className="collapse navbar-collapse " id="navbarNav">
         <ul className="navbar-nav navItems" id="align-right">
           <li className="nav-item active">
-            <a className="nav-link " href="#">Dashboard</a>
+            <Link className="nav-link " to={"/dashboard"}  activeStyle={{color:"red"}}>Dashboard</Link>
           </li>
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Indicators</a>
