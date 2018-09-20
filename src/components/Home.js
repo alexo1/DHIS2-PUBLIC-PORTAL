@@ -49,7 +49,7 @@ class Home extends Component{
 
          <Chat chartData={this.state.chartData}/>
 
-         <HiChart/>
+         {/* <HiChart/> */}
        
             </div>
         )

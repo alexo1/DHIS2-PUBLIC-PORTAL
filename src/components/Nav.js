@@ -82,6 +82,9 @@ class NavItems extends Component{
           <li className="nav-item">
             <a className="nav-link disabled" href="#">News</a>
           </li>
+          <li className="nav-item">
+          <Link to={"/Login"} class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Login</Link>
+          </li>
         </ul>
       </div>
       </div>

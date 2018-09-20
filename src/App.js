@@ -5,6 +5,7 @@ import{BrowserRouter,Route,Switch} from "react-router-dom";
 //components section
 import Home from './components/Home';
 import Dashboard from './components/Dashboard';
+import Login from './components/Login'
 import Error from './components/Error';
 
 //style section
@@ -25,6 +26,7 @@ class App extends Component {
     <Route path={"/"} component={Home} exact/>
     <Route path={"/home"} component={Home}/>
     <Route path={"/dashboard"} component={Dashboard}/>
+    <Route path={"/login"} component={Login}/>
     <Route component={Error}/>
 
     </Switch>
