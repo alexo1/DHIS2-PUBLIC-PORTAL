@@ -82,10 +82,6 @@ class NavItems extends Component{
           <li className="nav-item">
             <a className="nav-link disabled" href="#">News</a>
           </li>
-
-          <li className="nav-item">
-            <a className="nav-link disabled" href={Login}>API Endpoints</a>
-          </li>
         </ul>
       </div>
       </div>
