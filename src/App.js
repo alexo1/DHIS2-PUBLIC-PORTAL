@@ -7,6 +7,7 @@ import Home from './components/Home';
 import Dashboard from './components/Dashboard';
 import Login from './components/Login'
 import Error from './components/Error';
+import Admin from './components/Admin';
 
 //style section
 import './App.css';
@@ -20,13 +21,14 @@ class App extends Component {
     return (
       
 
-      <BrowserRouter>
+    <BrowserRouter>
     <Switch>
 
     <Route path={"/"} component={Home} exact/>
     <Route path={"/home"} component={Home}/>
     <Route path={"/dashboard"} component={Dashboard}/>
     <Route path={"/login"} component={Login}/>
+    <Route path={"/admin"} component={Admin}/>
     <Route component={Error}/>
 
     </Switch>

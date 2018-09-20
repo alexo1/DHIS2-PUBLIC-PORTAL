@@ -4,6 +4,7 @@ import Chat from './Chart';
 import HiChart from './Hi';
 import Navbar from './Navbar'
 
+
 class Home extends Component{
     constructor(){
         super();
