@@ -20,7 +20,7 @@ class Admin extends Component {
                 <Aside DashboardTitle="Antenatal Care"/>
                 </div>
                 <div className="col-md-9">
-                   <Chat chartData={this.state.chartData}/>
+                   <Chat/>
                 </div>
                 <div id="mybutton">
                 <button type="button" className="btn btn-primary feedback">Add new dashboard</button>
