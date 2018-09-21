@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import Login from './components/Login'
 import Error from './components/Error';
 import Admin from './components/Admin';
+import Add from './components/Add';
 
 //style section
 import './App.css';
@@ -29,6 +30,7 @@ class App extends Component {
     <Route path={"/dashboard"} component={Dashboard}/>
     <Route path={"/login"} component={Login}/>
     <Route path={"/admin"} component={Admin}/>
+    <Route path={"/add"} component={Add}/>
     <Route component={Error}/>
 
     </Switch>

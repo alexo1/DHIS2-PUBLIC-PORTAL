@@ -9,9 +9,9 @@ class Aside extends Component {
             
                 <div className="container">
                 
-             <div className="dashbord-component">
-             <a href="#" className="link1"><span></span></a>
-               <h6>{DashboardTitle}</h6>
+             <div>
+             <button type="button" className="btn btn-primary btn-lg dashbord-component">{DashboardTitle}</button>
+              
              
             </div>
             </div>
