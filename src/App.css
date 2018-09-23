@@ -128,3 +128,11 @@ height: 100%; width: 100%;
 .add-form{
   margin-top:20px;
 }
+/* .add-save{
+  margin-top:7px;
+} */
+
+.dropdown-menu{
+  overflow-y:scroll;
+  height:400px;
+}
