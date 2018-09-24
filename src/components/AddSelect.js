@@ -126,6 +126,7 @@ class AddSelect extends Component{
                     value={value}
                     onChange={this.handleChange}
                     options={options}
+                    multi={true}
                 />
             </div>
         )
