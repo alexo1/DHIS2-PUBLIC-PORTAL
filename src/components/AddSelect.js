@@ -11,7 +11,8 @@ class AddSelect extends Component{
     constructor(props){
         super(props);
         this.state = {
-            charts: []
+            charts: [],
+            reportTables:[]
         }
     }
   
@@ -63,6 +64,22 @@ class AddSelect extends Component{
     )))
         .then(charts=>this.setState({charts}))
         .catch(error=>console.log('parsed error', error))
+
+        //fetching pivot tables  
+        fetch('http://197.136.81.99:8082/test/api/reportTables',headers)
+        .then(response =>response.json())
+        .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
+            {
+  
+            reportTableId: `${reportTable.id}`,
+            reportTableName: `${reportTable.displayName}`
+  
+        }
+    )))
+        .then(reportTables=>this.setState({reportTables}))
+        .catch(error=>console.log('parsed error', error))
+
+    
   
        }
    
@@ -71,26 +88,35 @@ class AddSelect extends Component{
 
     render(){
 
-        console.log(this.state)
+    
         const {charts}=this.state
+        const {reportTables}=this.state
         const { name }=this.props;  
         const { selectedOption } = this.state;
         const value = selectedOption && selectedOption.value;
         const data= charts.map(chart=>{
                
-            return {value:chart.chartId,label:chart.chartName}
+            return {value:chart.reportTableId,label:chart.chartName}
             
       })
+      const data2=reportTables.map(reportTable=>{
+               
+        return {value:reportTable.chartId,label:reportTable.reportTableName}
+        
+  })
         
        
       const options = [
 
         {
             label: 'Charts', options:data
+        },
+        {
+            label: 'Pivot Tables', options:data2
         } 
 
     ] 
-       console.log(options) 
+     
         return(
             <div className="add-form">
             <label for="exampleFormControlInput1">Choose item to add</label>
