@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 
 import LoginGroup from './LoginGroup';
+import Navbar from './Navbar';
 
 
 
@@ -8,20 +9,22 @@ class Login extends Component{
     render(){
         return(
         
-            <div>
-                <div className="container">
-                <div className="row">
-                <div className="card">
-                 <div className="card-body">
+           <div>
+               <Navbar/>
 
-                 <LoginGroup/> 
-                 
-                 </div>
-                </div>
-                </div>
+             <div className="container">
+               <div className="row">
+               
+
+                <LoginGroup/>
+               
+               </div>
+              
+               </div>
+           </div>
                 
-                </div>
-            </div>
+                
+         
 
 
 

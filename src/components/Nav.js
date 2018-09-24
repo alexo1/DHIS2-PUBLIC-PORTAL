@@ -27,13 +27,13 @@ class NavItems extends Component{
 
       const headers ={
           headers:{
-              'Authorization': `Basic ${btoa('kenya:Last#2002')}`
+              'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
       }
       }
 
      
        
-      fetch('http://197.136.81.99:8080/training/api/indicators',headers)
+      fetch('http://197.136.81.99:8082/test/api/indicators',headers)
       .then(response =>response.json())
       .then(parsedJSON=>parsedJSON.indicators.map(indicator=>(
           {
@@ -81,6 +81,9 @@ class NavItems extends Component{
           </li>
           <li className="nav-item">
             <a className="nav-link disabled" href="#">News</a>
+          </li>
+          <li className="nav-item">
+          <Link to={"/Login"} class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Login</Link>
           </li>
         </ul>
       </div>

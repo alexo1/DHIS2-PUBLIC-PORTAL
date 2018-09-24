@@ -5,24 +5,25 @@ class LoginGroup extends Component{
     
     render(){
         return(
-             
-            <div>
+            
+            <div className="col align-self-center login">
                 <form>
-                <div className="form-group row">
-                    <label  className="col-sm-2 col-form-label">Username</label>
-                    <div className="col-sm-10">
-                    <input type="email" className="form-control" id="inputEmail3" placeholder="Email"/>
+                    <div className="form-group">
+                        <label for="exampleInputEmail1">Username</label>
+                        <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username"/>
+                        <small id="emailHelp" className="form-text text-muted">Please use your DHIS2 Username and Password.</small>
                     </div>
-                </div>
-                <div className="form-group row">
-                    <label  className="col-sm-2 col-form-label">Password</label>
-                    <div className="col-sm-10">
-                    <input type="password" className="form-control" id="inputPassword3" placeholder="Password"/>
+                    <div className="form-group">
+                        <label for="exampleInputPassword1">Password</label>
+                        <input type="password" className="form-control" id="exampleInputPassword1" placeholder="Password"/>
                     </div>
-                </div>
-                </form>
+                     <div className="text-center">
+                     <button type="submit" className="btn btn-primary login-button">Login</button>
+                     </div>
+                   
+                    </form>
             </div>
-
+          
         )
     }
 }
