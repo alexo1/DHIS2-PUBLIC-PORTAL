@@ -1,67 +1,62 @@
 import React, { Component } from 'react';
 import './form.css';
 
-/* var headers = {
-    headers:{
-        'Authorization': `Basic ${btoa(username +':'+ password)}`
-    }
-}   
- */
 
-function headers(username, password) {
-    /* pass the username & password to headers */
-
-
-    const headers = {
-        headers: {
-            'Authorization': `Basic ${btoa(username + ':' + password)}`
-        }
-    }
-}
 
 
 
 
 
 class Login extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
-            username: "",
-            password: "",
+            username: '',
+            password: ''
         }
     };
-    change = e => {
-        this.setState({
-            [e.target.name]: e.target.value
-        });
+    //store submited credentials
+    handlechange = event => {
+        this.setState({ username: event.target.value });
+
+    };
+    handlechangepassword = event => {
+        this.setState({ password: event.target.value });
+
     };
 
 
-    onSubmit = (e) => {
-        e.preventDefault();
+
+    handleSubmit = (event) => {
+
+        let username = this.state.username;
+        let password = this.state.password;
+
+
+        event.preventDefault();
         // Pulling datasets via API
         const headers = {
             headers: {
-                'Authorization': `Basic ${btoa('kenya:Last#2002')}`
+                'Authorization': `Basic ${btoa(this.state.props.username: this.state.props.password)}`
             }
         }
 
-        fetch('http://197.136.81.99:8080/training/api/dataSets?paging=false&fields=id,name,code,shortName,description,href',
-            headers
-        )
+        fetch("https://play.dhis2.org/2.30/api/organisationUnitGroupSets.json?paging=false&fields=name,organisationUnitGroups[name,organisationUnits[name]]", headers)
+
             .then(function deal(data) {
-
-
-
                 if (data.status === 401) {
-                    alert("Login with your dhis2 credentials")
+                    alert("Login with your dhis2 credentials");
                 } else {
-                    console.log(data)
+                    console.log(data);
+
                 }
-                console.log()
-            }).catch((error) => { console.log('Error', error) })
+                console.log();
+            })
+            .catch(error => {
+                console.log("Error", error);
+            });
     }
+
 
     render() {
 
@@ -86,7 +81,7 @@ class Login extends Component {
                                         name="username"
                                         placeholder="username"
                                         value={this.state.username}
-                                        onChange={e => this.change(e)} />
+                                        onChange={e => this.handlechange(e)} />
                                     <br />
 
                                     <br />
@@ -98,14 +93,14 @@ class Login extends Component {
                                         placeholder="password"
                                         type="Password"
                                         value={this.state.password}
-                                        onChange={e => this.change(e)} />
+                                        onChange={e => this.handlechangepassword(e)} />
                                 </div>
 
                                 <br />
                                 <br />
                                 <div className="button">
 
-                                    <input className="btn btn-success buton" onSubmit={e => this.onSubmit(e)} type="submit" value="Submit" />
+                                    <input className="btn btn-success buton" onChange={e => this.onSubmit(e)} type="submit" value="Submit" />
 
 
                                 </div>
@@ -118,17 +113,7 @@ class Login extends Component {
         );
     }
 }
-/*
-fetch('https://play.dhis2.org/2.30/api/organisationUnitGroupSets.json?paging=false&fields=name,organisationUnitGroups[name,organisationUnits[name]]', headers
-).then((fetchData) => fetchData.json()).then((jsonData) => {
-    (
-        {/*ReactDOM.render(<header datasets={jsonData.dataSets}/>, rootElement); }
 
-
-            .then(() => console.log('successful signin!')))
-
-}).catch((error) => { console.log('Error', error) });
-*/
 
 
 export default Login;
