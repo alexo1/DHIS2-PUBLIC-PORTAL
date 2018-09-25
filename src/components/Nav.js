@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import Login from './Login'
 
 class NavItems extends Component{
 
@@ -11,14 +11,14 @@ class NavItems extends Component{
       }
   }
 
-  componentDidMount() { 
-      
+  componentDidMount() {
+
       this.fetchdata();
 
-     } 
+     }
 
-     
-  
+
+
      fetchdata(){
 
      this.setState({
@@ -31,9 +31,10 @@ class NavItems extends Component{
       }
       }
 
-     
+
        
       fetch('http://197.136.81.99:8082/test/api/indicators',headers)
+
       .then(response =>response.json())
       .then(parsedJSON=>parsedJSON.indicators.map(indicator=>(
           {
@@ -66,14 +67,14 @@ class NavItems extends Component{
             <a className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Indicators</a>
             <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
         {
-          
+
 
             indicators.map(indicator=>{
             return   <a className="dropdown-item" href="#" key={indicator.indicatorId}>{indicator.indicatorName}</a>
             })
-        
+
         }
-        
+
         </div>
           </li>
           <li className="nav-item">
