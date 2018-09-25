@@ -11,20 +11,50 @@ class AddSelect extends Component{
     constructor(props){
         super(props);
         this.state = {
-            selectedOption: '',
+           
             charts: [],
-            reportTables:[]
+            reportTables:[],
+            reportTable:[]
         }
     }
   
-
+    state={
+        selectedOption: '',
+    }
 
       //function to handle selected values
 
       handleChange = (selectedOption) => {
-        this.setState({ 
-            selectedOption : selectedOption ?  selectedOption: ''});
-        console.log(`Selected: ${selectedOption.label}`);
+        
+        const headers ={
+            headers:{
+                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+        }
+        }
+
+        this.setState({ selectedOption});
+        console.log(`Selected: ${selectedOption.value}`);
+
+        //fetching data dimensions for selected item
+         fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
+        .then(response =>response.json())
+        .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
+            {
+  
+            reportTableId: `${reportTable.id}`,
+            reportTableName: `${reportTable.name}`,
+            reportTableperiod:`${reportTable.periods}`,
+            reportTableOrgUnits:`${reportTable.organisationUnits}`
+  
+        }
+        
+    )))
+        .then(reportTable=>console.log(this.setState({reportTable}))
+
+        
+        
+        )
+        .catch(error=>console.log('parsed error', error))
       }
     
     componentDidMount() { 
@@ -93,12 +123,12 @@ class AddSelect extends Component{
         const value = selectedOption && selectedOption.value;
         const data= charts.map(chart=>{
                
-            return {value:chart.reportTableId,label:chart.chartName}
+            return {value:chart.chartId,label:chart.chartName}
             
       })
       const data2=reportTables.map(reportTable=>{
                
-        return {value:reportTable.chartId,label:reportTable.reportTableName}
+        return {value:reportTable.reportTableId,label:reportTable.reportTableName}
         
   })
         
@@ -123,7 +153,7 @@ class AddSelect extends Component{
                     value={value}
                     onChange={this.handleChange}
                     options={options}
-                    isMulti={true}
+                    // isMulti={true}
                     
                 />
             </div>
