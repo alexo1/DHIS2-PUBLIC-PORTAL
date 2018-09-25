@@ -30,9 +30,6 @@ class NavItems extends Component{
               'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
       }
       }
-
-
-
       fetch('http://197.136.81.99:8082/test/api/indicators',headers)
       .then(response =>response.json())
       .then(parsedJSON=>parsedJSON.indicators.map(indicator=>(

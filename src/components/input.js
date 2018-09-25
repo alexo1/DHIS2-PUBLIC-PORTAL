@@ -34,7 +34,7 @@ class Input extends Component{
 
        
          
-        fetch('http://197.136.81.99:8080/training/api/organisationUnits',headers)
+        fetch('http://197.136.81.99:8082/test/api/organisationUnits',headers)
         .then(response =>response.json())
         .then(parsedJSON=>parsedJSON.organisationUnits.map(organisationUnit=>(
             {
