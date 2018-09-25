@@ -29,17 +29,14 @@ class Login extends Component {
 
     handleSubmit = (event) => {
 
-        let username = this.state.username;
-        let password = this.state.password;
+        const username = username;
+        const password = password;
 
 
         event.preventDefault();
         // Pulling datasets via API
-        const headers = {
-            headers: {
-                'Authorization': `Basic ${btoa(this.state.props.username: this.state.props.password)}`
-            }
-        }
+        const headers = { method: "Get", headers: { Authorization: "Basic " + btoa(username + ":" + password) } };
+
 
         fetch("https://play.dhis2.org/2.30/api/organisationUnitGroupSets.json?paging=false&fields=name,organisationUnitGroups[name,organisationUnits[name]]", headers)
 
@@ -60,7 +57,7 @@ class Login extends Component {
 
     render() {
 
-
+        console.log(this.state);
 
         const mystyle = {
             padding: '15px'
@@ -81,7 +78,7 @@ class Login extends Component {
                                         name="username"
                                         placeholder="username"
                                         value={this.state.username}
-                                        onChange={e => this.handlechange(e)} />
+                                        onChange={this.handlechange.bind(this)} />
                                     <br />
 
                                     <br />
@@ -93,7 +90,7 @@ class Login extends Component {
                                         placeholder="password"
                                         type="Password"
                                         value={this.state.password}
-                                        onChange={e => this.handlechangepassword(e)} />
+                                        onChange={this.handlechangepassword.bind(this)} />
                                 </div>
 
                                 <br />
