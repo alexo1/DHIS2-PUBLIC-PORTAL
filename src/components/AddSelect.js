@@ -14,7 +14,8 @@ class AddSelect extends Component{
            
             charts: [],
             reportTables:[],
-            reportTable:[]
+            reportTable:[],
+            options:[]
         }
     }
   
@@ -35,26 +36,28 @@ class AddSelect extends Component{
         this.setState({ selectedOption});
         console.log(`Selected: ${selectedOption.value}`);
 
+       
+
         //fetching data dimensions for selected item
-         fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
-        .then(response =>response.json())
-        .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
-            {
+    //      fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
+    //     .then(response =>response.json())
+    //     .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
+    //         {
   
-            reportTableId: `${reportTable.id}`,
-            reportTableName: `${reportTable.name}`,
-            reportTableperiod:`${reportTable.periods}`,
-            reportTableOrgUnits:`${reportTable.organisationUnits}`
+    //         reportTableId: `${reportTable.id}`,
+    //         reportTableName: `${reportTable.name}`,
+    //         reportTableperiod:`${reportTable.periods}`,
+    //         reportTableOrgUnits:`${reportTable.organisationUnits}`
   
-        }
+    //     }
         
-    )))
-        .then(reportTable=>console.log(this.setState({reportTable}))
+    // )))
+    //     .then(reportTable=>console.log(this.setState({reportTable}))
 
         
         
-        )
-        .catch(error=>console.log('parsed error', error))
+    //     )
+    //     .catch(error=>console.log('parsed error', error))
       }
     
     componentDidMount() { 
@@ -63,7 +66,7 @@ class AddSelect extends Component{
   
        } 
   
-       
+     
     
        fetchdata(){
   
@@ -122,7 +125,7 @@ class AddSelect extends Component{
         const { selectedOption } = this.state;
         const value = selectedOption && selectedOption.value;
         const data= charts.map(chart=>{
-               
+             
             return {value:chart.chartId,label:chart.chartName}
             
       })
@@ -143,7 +146,7 @@ class AddSelect extends Component{
         } 
 
     ] 
-     
+     console.log(options[0].label)
         return(
             <div className="add-form">
             <label for="exampleFormControlInput1">Choose item to add</label>
