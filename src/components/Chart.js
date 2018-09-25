@@ -55,7 +55,7 @@ class Chat extends Component{
                
                 </div>
 
-          <div className="container">
+          {/* <div className="container">
                 <Pie
                 data={this.state.chartData}
                 width={100}
@@ -80,7 +80,7 @@ class Chat extends Component{
               
                
                 </div>
-                 
+                  */}
 
            
               
