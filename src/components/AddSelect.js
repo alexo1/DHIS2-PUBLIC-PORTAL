@@ -11,22 +11,19 @@ class AddSelect extends Component{
     constructor(props){
         super(props);
         this.state = {
+            selectedOption: '',
             charts: [],
             reportTables:[]
         }
     }
   
-  
 
-  
-    state = {
-        selectedOption: '',
-      }
 
       //function to handle selected values
 
       handleChange = (selectedOption) => {
-        this.setState({ selectedOption });
+        this.setState({ 
+            selectedOption : selectedOption ?  selectedOption: ''});
         console.log(`Selected: ${selectedOption.label}`);
       }
     
@@ -126,6 +123,8 @@ class AddSelect extends Component{
                     value={value}
                     onChange={this.handleChange}
                     options={options}
+                    isMulti={true}
+                    
                 />
             </div>
         )

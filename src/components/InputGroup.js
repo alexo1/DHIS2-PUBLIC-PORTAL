@@ -45,6 +45,7 @@ class InputGroup extends Component{
                     value={value}
                     onChange={this.handleChange}
                     options={data}
+                
                 />
             </div>
         )
