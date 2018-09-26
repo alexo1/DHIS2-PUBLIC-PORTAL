@@ -14,14 +14,14 @@ class Input extends Component{
        
     }
     state = {
-        selectedOption: '',
-        selectedOption2: '',
+        selectedOption: [],
+        selectedOption2: [],
       }
 
       //function to handle selected values
 
       handleChange = (selectedOption) => {
-        this.setState({ selectedOption });
+        this.setState({ selectedOption});
         console.log(`Selected: ${selectedOption.label}`);
       }
       
@@ -78,14 +78,14 @@ class Input extends Component{
 
   
     render(){
-      console.log(selectedOption2.value)
+      console.log(this.state.selectedOption2)
         const headers ={
             headers:{
                 'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
         }
         }
          
-        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:XwR9InaSBqH;&dimension=ou:'+ selectedOption2.value +';&dimension=pe:2014;2015',headers)
+        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:XwR9InaSBqH;&dimension=pe:2014;2015',headers)
         .then(response =>console.log(response.json()))
         .then(parsedJSON=>parsedJSON.organisationUnits.map(organisationUnit=>(
             {
