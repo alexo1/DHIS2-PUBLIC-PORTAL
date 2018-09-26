@@ -9,15 +9,14 @@ import Typography from '@material-ui/core/Typography';
 
 import DataElements from './DataElements'
 
-{/*
+
 import Datasets from './Datasets'
 import FacilityList from './FacilityList'
 import Indicators from './Indicators'
 import OrganisationUnits from './OrganisationUnits'
-import Elemente from './Elemente'
-import orgUni from './orgUni'
 
-*/}
+
+
 
 function TabContainer(props) {
   return (
@@ -65,18 +64,18 @@ class SimpleTabs extends React.Component {
             {/*<Tab label="Item Three" href="#basic-tabs" /> */}
           </Tabs>
         </AppBar>
-        {/*
+
         {value === 0 && <TabContainer><OrganisationUnits /></TabContainer>}
         {value === 1 && <TabContainer><FacilityList /></TabContainer>}
         {value === 2 && <TabContainer><Indicators /></TabContainer>}
 
-*/}
+
 
         {value === 3 && <TabContainer><DataElements  /></TabContainer>}
 
-        {/*
+
         {value === 4 && <TabContainer><Datasets /></TabContainer>}
-        */}
+
         {
           /*
         }{value === 5 && <TabContainer><Elemente /></TabContainer>}
