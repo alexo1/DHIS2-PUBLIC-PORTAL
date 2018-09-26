@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Error from './components/Error';
 import Admin from './components/Admin';
 import Add from './components/Add';
+import Linker from './components/Linker'
 
 //style section
 import './App.css';
@@ -17,10 +18,10 @@ import './App.css';
 
 
 class App extends Component {
- 
+
   render() {
     return (
-      
+
 
     <BrowserRouter>
     <Switch>
@@ -31,12 +32,13 @@ class App extends Component {
     <Route path={"/login"} component={Login}/>
     <Route path={"/admin"} component={Admin}/>
     <Route path={"/add"} component={Add}/>
+    <Route path={"/Linker"} component={Linker}/>
     <Route component={Error}/>
 
     </Switch>
-      
-      
-     
+
+
+
 
 
       </BrowserRouter>
@@ -50,7 +52,7 @@ class App extends Component {
       //    <Chat chartData={this.state.chartData}/>
 
       //    <HiChart/>
-       
+
       // </div>
     );
   }
