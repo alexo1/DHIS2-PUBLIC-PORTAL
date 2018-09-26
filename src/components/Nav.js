@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
+
 import {Link} from "react-router-dom";
 import InputGroup from './InputGroup'
 import Select from 'react-select';
 import 'react-select-plus/dist/react-select-plus.css';
+
+
+
 
 class NavItems extends Component{
 
@@ -15,11 +19,11 @@ class NavItems extends Component{
       }
   }
 
-  componentDidMount() { 
-      
+  componentDidMount() {
+
       this.fetchdata();
 
-     } 
+     }
 
      handleChange = (selectedOption) => {
         
@@ -31,6 +35,7 @@ class NavItems extends Component{
      }
 
      
+
      fetchdata(){
 
      this.setState({
@@ -43,8 +48,6 @@ class NavItems extends Component{
       }
       }
 
-     
-       
       fetch('http://197.136.81.99:8082/test/api/indicators',headers)
       .then(response =>response.json())
       .then(parsedJSON=>parsedJSON.indicators.map(indicator=>(
@@ -80,6 +83,7 @@ class NavItems extends Component{
           <li className="nav-item active">
             <Link className="nav-link " to={"/dashboard"}  activeStyle={{color:"red"}}>Dashboard</Link>
           </li>
+
           <li className="nav-item active mydrop">
           <InputGroup name="Select Indicators"data={options} indicator={value}/>
           </li>
@@ -92,6 +96,11 @@ class NavItems extends Component{
           </li>
           <li className="nav-item">
           <Link to={"/Login"} class="btn btn-primary btn-sm active" role="button" aria-pressed="true">Login</Link>
+          </li>
+          <li className="nav-item">
+
+          <Link to={"/Linker"} class="nav-link" aria-pressed="true">API Data</Link>
+
           </li>
         </ul>
       </div>
