@@ -3,7 +3,7 @@ import './form.css';
 
 
 
-
+ 
 
 
 
@@ -16,44 +16,44 @@ class Login extends Component {
         }
     };
     //store submited credentials
-    handlechange = event => {
-        this.setState({ username: event.target.value });
-
+    handlechange =event => {
+        this.setState({username:event.target.value});
+        
     };
     handlechangepassword = event => {
         this.setState({ password: event.target.value });
-
+        
     };
-
-
+    
+  
 
     handleSubmit = (event) => {
 
-        const username = username;
-        const password = password;
+        const username= this.State.props.username;
+        const password =this.State.props.password; 
 
 
         event.preventDefault();
         // Pulling datasets via API
-        const headers = { method: "Get", headers: { Authorization: "Basic " + btoa(username + ":" + password) } };
-
+         const headers = { method: "Get", headers: { Authorization: "Basic " + btoa(username + ":" + password) } };
+    
 
         fetch("https://play.dhis2.org/2.30/api/organisationUnitGroupSets.json?paging=false&fields=name,organisationUnitGroups[name,organisationUnits[name]]", headers)
-
-            .then(function deal(data) {
-                if (data.status === 401) {
-                    alert("Login with your dhis2 credentials");
-                } else {
-                    console.log(data);
-
-                }
-                console.log();
-            })
-            .catch(error => {
-                console.log("Error", error);
-            });
+          
+        .then(function deal(data) {
+            if (data.status === 401) {
+              alert("Login with your dhis2 credentials");
+            } else {
+              console.log(data);
+            
+            }
+            console.log();
+          })
+          .catch(error => {
+            console.log("Error", error);
+          }); 
     }
-
+    
 
     render() {
 
@@ -97,7 +97,7 @@ class Login extends Component {
                                 <br />
                                 <div className="button">
 
-                                    <input className="btn btn-success buton" onChange={e => this.onSubmit(e)} type="submit" value="Submit" />
+                                    <input className="btn btn-success buton" onSubmit={e => this.onSubmit(e)} type="submit" value="Submit" />
 
 
                                 </div>
