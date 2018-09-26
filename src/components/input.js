@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import InputGroup from './InputGroup'
+import Select from 'react-select';
+import 'react-select-plus/dist/react-select-plus.css';
 
 
 class Input extends Component{
@@ -7,14 +8,34 @@ class Input extends Component{
     constructor(props){
         super(props);
         this.state = {
-            regions: []
+            regions: [],
+           
         }
        
     }
+    state = {
+        selectedOption: '',
+        selectedOption2: '',
+      }
+
+      //function to handle selected values
+
+      handleChange = (selectedOption) => {
+        this.setState({ selectedOption });
+        console.log(`Selected: ${selectedOption.label}`);
+      }
+      
+      handleChange2 = (selectedOption2) => {
+        this.setState({ selectedOption2 });
+        console.log(selectedOption2)
+        console.log(`Selected: ${selectedOption2.value}`);
+      }
+   
 
     componentDidMount() { 
         
         this.fetchdata();
+        
 
        } 
 
@@ -51,13 +72,46 @@ class Input extends Component{
 
        }
 
+       
+
+    
+
   
     render(){
-        
+      console.log(selectedOption2.value)
+        const headers ={
+            headers:{
+                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+        }
+        }
+         
+        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:XwR9InaSBqH;&dimension=ou:'+ selectedOption2.value +';&dimension=pe:2014;2015',headers)
+        .then(response =>console.log(response.json()))
+        .then(parsedJSON=>parsedJSON.organisationUnits.map(organisationUnit=>(
+            {
+
+            orgUnitId: `${organisationUnit.id}`,
+            orgUnitName: `${organisationUnit.displayName}`
+
+        }
+    )))
+        .then(regions=>this.setState({regions}))
+        .catch(error=>console.log('parsed error', error))
+
+
+
+
+
+        const { name }=this.props;
+        const { name2 }=this.props; 
         const {regions}  =this.state;
+        const { selectedOption } = this.state;
+        const { selectedOption2 } = this.state;
+        const value = selectedOption && selectedOption.label;
+        const value2 = selectedOption2 && selectedOption2.label;
         
         const selectList=regions.map(region=>{
-            return {value:region.OrgUnitId,label:region.orgUnitName}
+            return {value:region.orgUnitId,label:region.orgUnitName}
       });
 
       const options = [
@@ -124,12 +178,28 @@ class Input extends Component{
                  <div className="row">
                  <div className="col-6">
 
-                 <InputGroup name="Period" data={options}/>
+                 {/* <InputGroup name="Period" data={options}/> */}
+                 <Select
+                    placeholder="Period"
+                    name={name}
+                    value={value}
+                    onChange={this.handleChange}
+                    options={options}
+                
+                />
                  
                  </div>
                  <div className="col-6">
 
-                 <InputGroup name="Organisation Unit" data={selectList}/>
+                 {/* <InputGroup name="Organisation Unit" data={selectList}/> */}
+                 <Select
+                    placeholder="Organisation Units"
+                    name={name2}
+                    value={value2}
+                    onChange={this.handleChange2}
+                    options={selectList}
+                
+                />
 
                  </div>
                  </div>
