@@ -53,7 +53,7 @@ class SimpleTabs extends React.Component {
 
     return (
       <div className={classes.root}>
-        <AppBar position="static">
+        <AppBar position="dynamic">
           <Tabs value={value} onChange={this.handleChange}>
             <Tab label="Organisation Units" />
             <Tab label="Facilities" />
