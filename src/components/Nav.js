@@ -102,6 +102,10 @@ class NavItems extends Component{
           <Link to={"/Linker"} class="nav-link" aria-pressed="true">API Data</Link>
 
           </li>
+
+          <li className="nav-item">
+          <Link to={"/Blog"} class="nav-link" aria-pressed="true">Blog Section</Link>
+          </li>
         </ul>
       </div>
       </div>
