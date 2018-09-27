@@ -3,7 +3,7 @@ import Input from './input';
 import Chat from './Chart';
 import HiChart from './Hi';
 import Navbar from './Navbar'
-import InputGroup from './InputGroup';
+
 
 
 class Home extends Component{
@@ -48,6 +48,7 @@ class Home extends Component{
         <Navbar/>        
 
         <Input/>
+        
 
          <Chat chartData={this.state.chartData}/>
 

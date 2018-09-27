@@ -9,13 +9,15 @@ class Input extends Component{
         super(props);
         this.state = {
             regions: [],
+            indicators:[],
            
         }
        
     }
     state = {
-        selectedOption: [],
-        selectedOption2: [],
+        selectedOption: null,
+        selectedOption2: null,
+        selectedOption3: null,
       }
 
       //function to handle selected values
@@ -29,6 +31,11 @@ class Input extends Component{
         this.setState({ selectedOption2 });
         console.log(selectedOption2)
         console.log(`Selected: ${selectedOption2.value}`);
+      }
+      handleChange3 = (selectedOption3) => {
+        this.setState({ selectedOption3 });
+        console.log(selectedOption3)
+        console.log(`Selected: ${selectedOption3.value}`);
       }
    
 
@@ -68,6 +75,22 @@ class Input extends Component{
         .then(regions=>this.setState({regions}))
         .catch(error=>console.log('parsed error', error))
 
+
+         
+        fetch('http://197.136.81.99:8082/test/api/indicators',headers)
+        .then(response =>response.json())
+        .then(parsedJSON=>parsedJSON.indicators.map(indicator=>(
+            {
+  
+            indicatorId: `${indicator.id}`,
+            indicatorName: `${indicator.displayName}`
+  
+        }
+    )))
+        .then(indicators=>this.setState({indicators}))
+        .catch(error=>console.log('parsed error', error))
+  
+
         
 
        }
@@ -85,13 +108,13 @@ class Input extends Component{
         }
         }
          
-        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:XwR9InaSBqH;&dimension=pe:2014;2015',headers)
+        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:XwR9InaSBqH;&dimension=pe:2015',headers)
         .then(response =>console.log(response.json()))
-        .then(parsedJSON=>parsedJSON.organisationUnits.map(organisationUnit=>(
+        .then(parsedJSON=>parsedJSON.headers.map(fetched=>(
             {
 
-            orgUnitId: `${organisationUnit.id}`,
-            orgUnitName: `${organisationUnit.displayName}`
+            data: `${fetched[0]}`,
+            year: `${fetched[2]}`
 
         }
     )))
@@ -104,11 +127,16 @@ class Input extends Component{
 
         const { name }=this.props;
         const { name2 }=this.props; 
+        const { name3 }=this.props;
         const {regions}  =this.state;
         const { selectedOption } = this.state;
         const { selectedOption2 } = this.state;
-        const value = selectedOption && selectedOption.label;
-        const value2 = selectedOption2 && selectedOption2.label;
+        const { selectedOption3 } = this.state;
+        const {indicators}  =this.state;
+         const options2= indicators.map(indicator=>{
+           return  {value:indicator.indicatorId,label:indicator.indicatorName}
+           })
+        
         
         const selectList=regions.map(region=>{
             return {value:region.orgUnitId,label:region.orgUnitName}
@@ -174,28 +202,41 @@ class Input extends Component{
         return(
         
             <div className="inputs">
-                <div className="container">
+                <div className="container-fluid">
                  <div className="row">
-                 <div className="col-6">
+                 <div className="col-4">
+
+                 {/* <InputGroup name="Organisation Unit" data={selectList}/> */}
+                 <Select
+                    placeholder="Indicators"
+                    name={name3}
+                    value={selectedOption3}
+                    onChange={this.handleChange3}
+                    options={options2}
+                
+                />
+
+                 </div>
+                 <div className="col-4">
 
                  {/* <InputGroup name="Period" data={options}/> */}
                  <Select
                     placeholder="Period"
                     name={name}
-                    value={value}
+                    value={selectedOption}
                     onChange={this.handleChange}
                     options={options}
                 
                 />
                  
                  </div>
-                 <div className="col-6">
+                 <div className="col-4">
 
                  {/* <InputGroup name="Organisation Unit" data={selectList}/> */}
                  <Select
                     placeholder="Organisation Units"
                     name={name2}
-                    value={value2}
+                    value={selectedOption2}
                     onChange={this.handleChange2}
                     options={selectList}
                 

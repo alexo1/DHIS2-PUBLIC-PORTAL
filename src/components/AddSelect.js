@@ -20,7 +20,7 @@ class AddSelect extends Component{
     }
   
     state={
-        selectedOption: '',
+        selectedOption: null
     }
 
       //function to handle selected values
@@ -40,26 +40,62 @@ class AddSelect extends Component{
 
        
 
-        //fetching data dimensions for selected item
-    //      fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
-    //     .then(response =>response.json())
-    //     .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
-    //         {
+        // fetching data dimensions for selected item
+         fetch('http://197.136.81.99:8082/test/api/charts/'+ selectedOption.value +'',headers)
+        .then(response =>console.log(response.json()))
+        .then(parsedJSON=>parsedJSON.response.map(chart=>(
+            {
+                
+            
+            // getting the relevant dimensions
+           
   
-    //         reportTableId: `${reportTable.id}`,
-    //         reportTableName: `${reportTable.name}`,
-    //         reportTableperiod:`${reportTable.periods}`,
-    //         reportTableOrgUnits:`${reportTable.organisationUnits}`
-  
-    //     }
+        }
         
-    // )))
-    //     .then(reportTable=>console.log(this.setState({reportTable}))
+    )))
+        .then(reportTable=>console.log(this.setState({reportTable}))
 
         
         
-    //     )
-    //     .catch(error=>console.log('parsed error', error))
+        )
+        .catch(
+            fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
+            .then(response =>console.log(response.json()))
+            .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
+                {
+      
+                //getting the relevant dimensions
+      
+            }
+            
+        )))
+            .then(reportTable=>console.log(this.setState({reportTable}))
+    
+            
+            
+            )
+            .catch(error=>console.log('parsed error', error))
+
+        )
+
+
+        //fetching the analytics api with the gotten dimentions
+        fetch('http://197.136.81.99:8082/test/api/analytics/dimension:'+ selectedOption.value +'',headers)
+            .then(response =>response.json())
+            .then(parsedJSON=>parsedJSON.response.map(reportTable=>(
+                {
+      
+                
+      
+            }
+            
+        )))
+            .then(reportTable=>console.log(this.setState({reportTable}))
+    
+            
+            
+            )
+            .catch(error=>console.log('parsed error', error))
       }
     
     componentDidMount() { 
@@ -125,7 +161,7 @@ class AddSelect extends Component{
         const {reportTables}=this.state
         const { name }=this.props;  
         const { selectedOption } = this.state;
-        const value = selectedOption && selectedOption.value;
+        // const value = selectedOption && selectedOption.value;
         const data= charts.map(chart=>{
              
             return {value:chart.chartId,label:chart.chartName}
@@ -147,18 +183,17 @@ class AddSelect extends Component{
             label: 'Pivot Tables', options:data2
         } 
 
-    ] 
-     console.log(options[0].label)
+    ]
         return(
             <div className="add-form">
             <label for="exampleFormControlInput1">Choose item to add</label>
                 {/* <span class="input-group-text" id="inputGroup-sizing-default">{name}</span> */}
                 <Select
                     name={name}
-                    value={value}
+                    value={selectedOption}
                     onChange={this.handleChange}
                     options={options}
-                    isMulti={true}
+                    // isMulti={true}
                     
                 />
             </div>

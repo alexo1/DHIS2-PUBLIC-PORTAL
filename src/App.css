@@ -12,9 +12,6 @@
 .nav-item{
   padding: 20px;
 }
-.mydrop{
-  width:300px!important;
-}
 .inputs{
   margin-top: 70px;
 }
@@ -138,4 +135,7 @@ height: 100%; width: 100%;
 .dropdown-menu{
   overflow-y:scroll;
   height:400px;
+}
+.display-graphs{
+  margin-top:20px;
 }

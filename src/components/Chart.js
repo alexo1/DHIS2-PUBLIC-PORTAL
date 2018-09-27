@@ -1,5 +1,5 @@
 import React ,{Component} from 'react';
-import {Bar,Line,Pie} from 'react-chartjs-2';
+import {Bar,Line,Pie,Radar} from 'react-chartjs-2';
 import MyButton from './Button';
 
 
@@ -68,35 +68,14 @@ class Chat extends Component{
         console.log(type);
 
         return(
-            <div>
-                <div className="container">
-                <Bar
-                data={this.state.chartData}
-                width={100}
-                height={50}
-                options={{
-                   title:{
-                       display:this.props.displayTitle,
-                       text:'Malaria Cases in Kenya',
-                       fontSize:25
+        
+        
 
-                   },
-                   legend:{
-                       display:this.props.displayLegend,
-                       position:this.props.legendPosition
-                   }
-                }}
-                />
-                
-                <MyButton name="Bar Graph"/>
-                <MyButton name="Line Graph"/>
-                <MyButton name="Pie Chart"/>
-              
-               
-                </div>
-
-          {/* <div className="container">
-                <Pie
+          <div className="container-fluid display-graphs">
+          <div className="row">
+          <div className="col-lg-6">
+          <div className="card">
+          <Bar
                 data={this.state.chartData}
                 width={100}
                 height={50}
@@ -114,13 +93,102 @@ class Chat extends Component{
                 }}
                 />
                 
-                <MyButton name="Bar Graph"/>
-                <MyButton name="Line Graph"/>
-                <MyButton name="Pie Chart"/>
+               
+          </div>
+          <MyButton name="Image(.png)"/>
+         <MyButton name="PDF"/>
+        
+          </div>
+          <div className="col-lg-6">
+          <div className="card">
+          <Pie
+                data={this.state.chartData}
+                width={100}
+                height={50}
+                options={{
+                   title:{
+                       display:this.props.displayTitle,
+                       text:'Hiv Infection Among Kenyan Population',
+                       fontSize:25
+
+                   },
+                   legend:{
+                       display:this.props.displayLegend,
+                       position:this.props.legendPosition
+                   }
+                }}
+                />
+          </div>
+          
+                
+          <MyButton name="Image(.png)"/>
+        <MyButton name="PDF"/>
+          </div>
+          </div>
+          <div className="row">
+          <div className="col-lg-6">
+          <div className="card">
+          <Line
+                data={this.state.chartData}
+                width={100}
+                height={50}
+                options={{
+                   title:{
+                       display:this.props.displayTitle,
+                       text:'Hiv Infection Among Kenyan Population',
+                       fontSize:25
+
+                   },
+                   legend:{
+                       display:this.props.displayLegend,
+                       position:this.props.legendPosition
+                   }
+                }}
+                />
+          </div>
+         
+                
+          <MyButton name="Image(.png)"/>
+        <MyButton name="PDF"/>
+          </div>
+          <div className="col-lg-6">
+          <div className="card">
+          <Radar
+                data={this.state.chartData}
+                width={100}
+                height={50}
+                options={{
+                   title:{
+                       display:this.props.displayTitle,
+                       text:'Hiv Infection Among Kenyan Population',
+                       fontSize:25
+
+                   },
+                   legend:{
+                       display:this.props.displayLegend,
+                       position:this.props.legendPosition
+                   }
+                }}
+                />
+          </div>
+         
+                
+                <MyButton name="Image(.png)"/>
+                <MyButton name="PDG"/>
+                
+          </div>
+          </div>
+                
               
                
                 </div>
-                  */}
+
+                
+               
+              
+               
+               
+                 
 
            
             
@@ -129,7 +197,7 @@ class Chat extends Component{
                
                
 
-            </div>
+           
           
         )
     }
