@@ -42,33 +42,28 @@ class AddSelect extends Component{
 
         // fetching data dimensions for selected item
          fetch('http://197.136.81.99:8082/test/api/charts/'+ selectedOption.value +'',headers)
-        .then(response =>console.log(response.json()))
-        .then(parsedJSON=>parsedJSON.response.map(chart=>(
-            {
-                
-            
-            // getting the relevant dimensions
-           
-  
-        }
-        
-    )))
+         .then(response=>response.json())
+         .then(parsedJson=>{
+             console.log(parsedJson)
+             console.log(parsedJson.periods[0].id)
+             console.log(parsedJson.organisationUnits[0].id)
+             return parsedJson
+         })
         .then(reportTable=>console.log(this.setState({reportTable}))
 
         
         
         )
         .catch(
+            
             fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
             .then(response =>console.log(response.json()))
-            .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
-                {
-      
-                //getting the relevant dimensions
-      
-            }
+            .then(parsedJSON=> {
+
+                console.log(parsedJSON)
+            }        
             
-        )))
+        )
             .then(reportTable=>console.log(this.setState({reportTable}))
     
             

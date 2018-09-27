@@ -16,7 +16,7 @@ class Navbar extends Component{
         return(
             <div>
                 <nav className="navbar navbar-expand-lg navbar-light bg-light mynav">
-                <Link className="navbar-brand" to={"/"}>Navbar</Link>
+                <Link className="navbar-brand" to={"/"}>DHIS2 PUBLIC PORTAL</Link>
                 
                 <div>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -33,7 +33,7 @@ class Navbar extends Component{
                     <a className="nav-link" href="#">Downloads</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link disabled" href="#">Api Endpoints</a>
+                    <Link to={"/Api-endpoint"} className="nav-link disabled" href="#">Api Endpoints</Link>
                 </li>
                 <li className="nav-item active mydrop">
 

@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Error from './components/Error';
 import Admin from './components/Admin';
 import Add from './components/Add';
+import  Linker from './components/Linker'
 
 //style section
 import './App.css';
@@ -31,6 +32,7 @@ class App extends Component {
     <Route path={"/login"} component={Login}/>
     <Route path={"/admin"} component={Admin}/>
     <Route path={"/add"} component={Add}/>
+    <Route path={"/Api-endpoint"} component={Linker}/>
     <Route component={Error}/>
 
     </Switch>

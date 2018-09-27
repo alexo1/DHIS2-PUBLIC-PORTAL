@@ -82,8 +82,8 @@ class Chat extends Component{
                 options={{
                    title:{
                        display:this.props.displayTitle,
-                       text:'Hiv Infection Among Kenyan Population',
-                       fontSize:25
+                       text:'ANC clients Tested HIV among New ANC Clients Coverage',
+                       fontSize:20
 
                    },
                    legend:{
@@ -108,8 +108,8 @@ class Chat extends Component{
                 options={{
                    title:{
                        display:this.props.displayTitle,
-                       text:'Hiv Infection Among Kenyan Population',
-                       fontSize:25
+                       text:'% ANC Issued with combined Iron&Folate',
+                       fontSize:20
 
                    },
                    legend:{
@@ -135,8 +135,8 @@ class Chat extends Component{
                 options={{
                    title:{
                        display:this.props.displayTitle,
-                       text:'Hiv Infection Among Kenyan Population',
-                       fontSize:25
+                       text:'ANC Partners Tested among New ANC Clients Coverage',
+                       fontSize:20
 
                    },
                    legend:{
@@ -160,8 +160,8 @@ class Chat extends Component{
                 options={{
                    title:{
                        display:this.props.displayTitle,
-                       text:'Hiv Infection Among Kenyan Population',
-                       fontSize:25
+                       text:'ANC Attendance New Clients',
+                       fontSize:20
 
                    },
                    legend:{
