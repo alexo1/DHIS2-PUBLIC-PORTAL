@@ -118,8 +118,7 @@ class InputGroup extends Component{
                           <thead class="thead-dark">
                             <tr>
                               <th scope="col">#ID</th>
-                              <th scope="col">orgunit code</th>
-                              <th scope="col">OrganisationUnit level</th>
+                              <th scope="col">OrganisationUnit name</th>
                             </tr>
                           </thead>
                           <tbody>
@@ -128,8 +127,7 @@ class InputGroup extends Component{
 
                             return<tr>
 
-                            <td>{region.orgunitID}</td>
-                            <td>{region.orgunitLevelDesc}</td>
+                            <td>{region.orgunitID}</td>                            
                             <td>{region.orgunitName }</td>
                             </tr>
                             })
@@ -159,7 +157,7 @@ class InputGroup extends Component{
               */}
 
 
-              
+
         </div>
 
 
