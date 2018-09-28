@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 
-import {Link} from "react-router-dom"
+import {Link} from "react-router-dom";
+import InputGroup from './InputGroup'
+import Select from 'react-select';
+import 'react-select-plus/dist/react-select-plus.css';
+
 
 
 
@@ -10,7 +14,8 @@ class NavItems extends Component{
   constructor(props){
       super(props);
       this.state = {
-          indicators: []
+          indicators: [],
+
       }
   }
 
@@ -20,7 +25,16 @@ class NavItems extends Component{
 
      }
 
+     handleChange = (selectedOption) => {
+        
+      
 
+      this.setState({ selectedOption});
+      console.log(`Selected: ${selectedOption.value}`);
+     
+     }
+
+     
 
      fetchdata(){
 
@@ -51,7 +65,13 @@ class NavItems extends Component{
 
 
    render(){
+
+    const { selectedOption } = this.state;
+    const value = selectedOption && selectedOption.value;
     const {indicators}  =this.state;
+    const options= indicators.map(indicator=>{
+      return  {value:indicator.indicatorId,label:indicator.indicatorName}
+      })
        return(
 
       <div>
@@ -63,20 +83,11 @@ class NavItems extends Component{
           <li className="nav-item active">
             <Link className="nav-link " to={"/dashboard"}  activeStyle={{color:"red"}}>Dashboard</Link>
           </li>
-          <li className="nav-item dropdown">
-            <a className="nav-link dropdown-toggle"  id="navbarDropdownMenuLink" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Indicators</a>
-            <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-        {
 
-
-            indicators.map(indicator=>{
-            return   <a className="dropdown-item" href="#" key={indicator.indicatorId}>{indicator.indicatorName}</a>
-            })
-
-        }
-
-        </div>
+          <li className="nav-item active mydrop">
+          <InputGroup name="Select Indicators"data={options} indicator={value}/>
           </li>
+           
           <li className="nav-item">
             <a className="nav-link" href="#">Downloads</a>
           </li>

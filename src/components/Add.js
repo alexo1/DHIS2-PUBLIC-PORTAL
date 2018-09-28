@@ -8,7 +8,10 @@ import AddSave from "./AddSave";
 
 
 class Add extends Component{
+
+    
     render(){
+        const {value}=this.props
         return(
             <div>
              <NavLayout/>
@@ -23,6 +26,7 @@ class Add extends Component{
             <div className="col-lg-6">
             <AddSelect/>
             </div>
+            <div className="container" id="chart1"></div>
             </div>
             </div>
             </div>

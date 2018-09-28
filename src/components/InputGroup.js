@@ -24,7 +24,7 @@ class InputGroup extends Component{
 
 
     render(){
-        
+        const {indicator}=this.props
         const { name }=this.props; 
         const { data }=this.props; 
         const { selectedOption } = this.state;

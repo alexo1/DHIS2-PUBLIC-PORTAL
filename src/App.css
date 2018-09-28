@@ -12,6 +12,9 @@
 .nav-item{
   padding: 20px;
 }
+.mydrop{
+  width:300px!important;
+}
 .inputs{
   margin-top: 70px;
 }

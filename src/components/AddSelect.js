@@ -36,6 +36,8 @@ class AddSelect extends Component{
         this.setState({ selectedOption});
         console.log(`Selected: ${selectedOption.value}`);
 
+        
+
        
 
         //fetching data dimensions for selected item
@@ -156,7 +158,7 @@ class AddSelect extends Component{
                     value={value}
                     onChange={this.handleChange}
                     options={options}
-                    // isMulti={true}
+                    isMulti={true}
                     
                 />
             </div>

@@ -7,6 +7,7 @@ import MyButton from './Button';
 
 
 
+
 class Chat extends Component{
     constructor(props){
         super(props);
@@ -22,6 +23,45 @@ class Chat extends Component{
         displayLegend:true,
         legendPosition:'right'
     }
+
+    componentDidMount() { 
+        
+        this.fetchdata();
+  
+       } 
+  
+     
+    
+       fetchdata(){
+  
+       this.setState({
+            charts: []
+        })
+  
+        const headers ={
+            headers:{
+                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+        }
+        }
+  
+       
+         
+        fetch('http://197.136.81.99:8082/test/api/charts',headers)
+        .then(response =>response.json())
+        .then(parsedJSON=>parsedJSON.charts.map(chart=>(
+            {
+  
+            chartId: `${chart.id}`,
+            chartName: `${chart.displayName}`
+  
+        }
+    )))
+        .then(charts=>this.setState({charts}))
+        .catch(error=>console.log('parsed error', error))
+
+    }
+
+    
     render(){
         console.log(this.state.name);
         let type=this.state.name;
@@ -83,7 +123,7 @@ class Chat extends Component{
                   */}
 
            
-              
+            
               
                 
                
