@@ -10,35 +10,38 @@ class Input extends Component{
         this.state = {
             regions: [],
             indicators:[],
+            selectedOption: null,
+            selectedOption2: null,
+            selectedOption3: null,
            
         }
        
+       
     }
-    state = {
-        selectedOption: null,
-        selectedOption2: null,
-        selectedOption3: null,
-      }
 
       //function to handle selected values
 
       handleChange = (selectedOption) => {
         this.setState({ selectedOption});
-        console.log(`Selected: ${selectedOption.label}`);
+        this.state.period= `${selectedOption.label}`;
+        console.log(this.state.period)
+        
       }
       
       handleChange2 = (selectedOption2) => {
         this.setState({ selectedOption2 });
         console.log(selectedOption2)
-        console.log(`Selected: ${selectedOption2.value}`);
+        this.state.orgunit=` ${selectedOption2.value}`;
+        console.log(this.state.orgunit)
       }
       handleChange3 = (selectedOption3) => {
         this.setState({ selectedOption3 });
         console.log(selectedOption3)
-        console.log(`Selected: ${selectedOption3.value}`);
+        this.state.indicator=`${selectedOption3.value}`;
+        // console.log(this.state.indicator)
       }
    
-
+    
     componentDidMount() { 
         
         this.fetchdata();
@@ -101,14 +104,21 @@ class Input extends Component{
 
   
     render(){
+        console.log(this.state.period)
+        console.log(this.state.orgunit)
+        console.log(this.state.indicator)
+
       console.log(this.state.selectedOption2)
+
+      console.log(this.state.selectedOption)
+      console.log(this.state.selectedOption3)
         const headers ={
             headers:{
                 'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
         }
         }
          
-        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:XwR9InaSBqH;&dimension=pe:2015',headers)
+        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:'+this.state.indicator+';&dimension=ou:'+this.state.orgunit+';&dimension=pe:2015;',headers)
         .then(response =>console.log(response.json()))
         .then(parsedJSON=>parsedJSON.headers.map(fetched=>(
             {
@@ -133,12 +143,12 @@ class Input extends Component{
         const { selectedOption2 } = this.state;
         const { selectedOption3 } = this.state;
         const {indicators}  =this.state;
-         const options2= indicators.map(indicator=>{
+        const options2= indicators.map(indicator=>{
            return  {value:indicator.indicatorId,label:indicator.indicatorName}
            })
         
         
-        const selectList=regions.map(region=>{
+      const selectList=regions.map(region=>{
             return {value:region.orgUnitId,label:region.orgUnitName}
       });
 
