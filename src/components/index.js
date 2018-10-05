@@ -2,6 +2,7 @@ import DataElements from './DataElements'
 import Datasets from './Datasets'
 import FacilityList from './FacilityList'
 import Indicators from './Indicators'
+import Blog from './Blog' 
 
 import Navigator from './Navigator'
 import OrganisationUnits from './OrganisationUnits'
@@ -16,5 +17,6 @@ export {
   Navigator,
   OrganisationUnits,
   Elemente,
-  orgUni
+  orgUni,
+  Blog
 }
