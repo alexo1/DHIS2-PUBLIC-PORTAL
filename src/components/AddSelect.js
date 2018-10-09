@@ -29,7 +29,7 @@ class AddSelect extends Component{
         
         const headers ={
             headers:{
-                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+                'Authorization': `Basic ${btoa('hi4kenya2018:Kenya#2018')}`
         }
         }
 
@@ -41,7 +41,7 @@ class AddSelect extends Component{
        
 
         // fetching data dimensions for selected item
-         fetch('http://197.136.81.99:8082/test/api/charts/'+ selectedOption.value +'',headers)
+         fetch('https://hiskenya.org/api/charts/'+ selectedOption.value +'',headers)
          .then(response=>response.json())
          .then(parsedJson=>{
              console.log(parsedJson)
@@ -56,7 +56,7 @@ class AddSelect extends Component{
         )
         .catch(
             
-            fetch('http://197.136.81.99:8082/test/api/reportTables/'+ selectedOption.value +'',headers)
+            fetch('https://hiskenya.org/api/reportTables/'+ selectedOption.value +'',headers)
             .then(response =>console.log(response.json()))
             .then(parsedJSON=> {
 
@@ -75,7 +75,7 @@ class AddSelect extends Component{
 
 
         //fetching the analytics api with the gotten dimentions
-        fetch('http://197.136.81.99:8082/test/api/analytics/dimension:'+ selectedOption.value +'',headers)
+        fetch('https://hiskenya.org/api/analytics/dimension:'+selectedOption.value+'',headers)
             .then(response =>response.json())
             .then(parsedJSON=>parsedJSON.response.map(reportTable=>(
                 {
@@ -109,13 +109,13 @@ class AddSelect extends Component{
   
         const headers ={
             headers:{
-                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+                'Authorization': `Basic ${btoa('hi4kenya2018:Kenya#2018')}`
         }
         }
   
        
          
-        fetch('http://197.136.81.99:8082/test/api/charts',headers)
+        fetch('https://hiskenya.org/api/charts',headers)
         .then(response =>response.json())
         .then(parsedJSON=>parsedJSON.charts.map(chart=>(
             {
@@ -129,7 +129,7 @@ class AddSelect extends Component{
         .catch(error=>console.log('parsed error', error))
 
         //fetching pivot tables  
-        fetch('http://197.136.81.99:8082/test/api/reportTables',headers)
+        fetch('https://hiskenya.org/api/reportTables',headers)
         .then(response =>response.json())
         .then(parsedJSON=>parsedJSON.reportTables.map(reportTable=>(
             {

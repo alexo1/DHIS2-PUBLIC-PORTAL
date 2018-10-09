@@ -31,7 +31,7 @@ class Input extends Component{
       handleChange2 = (selectedOption2) => {
         this.setState({ selectedOption2 });
         console.log(selectedOption2)
-        this.state.orgunit=` ${selectedOption2.value}`;
+        this.state.orgunit=`${selectedOption2.value}`;
         console.log(this.state.orgunit)
       }
       handleChange3 = (selectedOption3) => {
@@ -59,13 +59,13 @@ class Input extends Component{
 
         const headers ={
             headers:{
-                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+                'Authorization': `Basic ${btoa('hi4kenya2018:Kenya#2018')}`
         }
         }
 
        
          
-        fetch('http://197.136.81.99:8082/test/api/organisationUnits',headers)
+        fetch('https://hiskenya.org/api/organisationUnits',headers)
         .then(response =>response.json())
         .then(parsedJSON=>parsedJSON.organisationUnits.map(organisationUnit=>(
             {
@@ -80,7 +80,7 @@ class Input extends Component{
 
 
          
-        fetch('http://197.136.81.99:8082/test/api/indicators',headers)
+        fetch('https://hiskenya.org/api/indicators',headers)
         .then(response =>response.json())
         .then(parsedJSON=>parsedJSON.indicators.map(indicator=>(
             {
@@ -112,13 +112,15 @@ class Input extends Component{
 
       console.log(this.state.selectedOption)
       console.log(this.state.selectedOption3)
-        const headers ={
+
+     const headers ={
             headers:{
-                'Authorization': `Basic ${btoa('stevekahugu@gmail.com:Steve@95')}`
+                'Authorization': `Basic ${btoa('hi4kenya2018:Kenya#2018')}`
         }
         }
          
-        fetch('http://197.136.81.99:8082/test/api/analytics?dimension=dx:'+this.state.indicator+';&dimension=ou:'+this.state.orgunit+';&dimension=pe:2015;',headers)
+        // fetch('https://hiskenya.org/api/analytics?dimension=dx:'+this.state.indicator+'&dimension=ou:'+this.state.orgunit+'&dimension=pe:2015',headers)
+        fetch(`https://hiskenya.org/api/analytics?dimension=dx:${this.state.indicator}&dimension=ou:${this.state.orgunit}&dimension=pe:LAST_52_WEEKS`,headers)
         .then(response =>console.log(response.json()))
         .then(parsedJSON=>parsedJSON.headers.map(fetched=>(
             {
