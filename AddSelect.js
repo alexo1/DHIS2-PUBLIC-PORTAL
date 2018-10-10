@@ -363,7 +363,9 @@ class AddSelect extends Component{
         }
     ))
             console.log ( "this is sData" + sData);
-            
+            this.setState({
+                Selected: sData
+            })
 })
         .then(charts=>this.setState({charts}))
         .catch(error=>console.log('parsed error', error))
@@ -432,11 +434,11 @@ class AddSelect extends Component{
                     
                 />
 
-                <Collapsible trigger="Indicators">
+                <Collapsible trigger="Selected">
                     <div className="col-md-12">
                       <FilteredMultiSelect
                         buttonText="Add"
-                        // classNames={BOOTSTRAP_CLASSES}
+                        classNames={BOOTSTRAP_CLASSES}
                         onChange={this.handleSelect}
                         options={Selected}
                         selectedOptions={selectedOptions}
